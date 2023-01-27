@@ -1,0 +1,124 @@
+div {
+
+  .pick_add_card__container__active {
+    border:1px solid rebeccapurple !important;
+    background:hsl(217, 100%, 97%) !important;
+  }
+
+  .pick_add_card__container {
+    padding:.5rem 1rem;
+    border:1px solid hsl(229, 24%, 87%);
+    border-radius:10px;
+    margin-top:1rem;
+    display:flex;
+    gap:.75rem;
+    cursor:pointer;
+
+    .select {
+      width:20px;
+      height:20px;
+      border:1px solid hsl(229, 24%, 87%);
+      border-radius:5px;
+      align-self: center;
+      position:relative;
+    }
+    .select__active {
+      background: hsl(243, 100%, 62%);
+      border:1px solid hsl(243, 100%, 62%);
+    }
+
+    .select__active::before {
+      content:"";
+      position:absolute;
+      width:3px;
+      height:7px;
+      background: white;
+      border-radius:5px;
+      top:10px;
+      left:6px;
+      transform:rotate(-45deg);
+    }
+    .select__active::after {
+      content:"";
+      position:absolute;
+      width:3px;
+      height:12px;
+      background: white;
+      border-radius:5px;
+      top:6px;
+      left:12px;
+      transform:rotate(45deg);
+    }
+
+    p {
+      font-size:.75rem;
+      color:hsl(243, 100%, 62%);
+      align-self:center;
+    }
+
+    .pick__text {
+      flex-grow:1;
+      width:100px;
+
+      h2 {
+        font-size:.9rem;
+        color:hsl(213, 96%, 18%);
+      }
+      p {
+        margin-top:.2rem;
+        font-size:.75rem;
+        color:hsl(231, 11%, 63%);
+      }
+    }
+  }
+
+  .buttons {
+    display:flex;
+    justify-content: flex-end;
+    margin-top:1.5rem;
+
+    .nextStep__btn {
+      background:hsl(213, 96%, 18%);
+      color:hsl(0, 0%, 100%);
+      border:none;
+      border-radius:5px;
+      padding:.8rem 1.2rem;
+      font-size:1rem;
+
+    }
+  }
+
+}
+
+@media (min-width:768px) {
+
+  div {
+
+    .pick_add_card__container {
+      padding:1rem;
+      margin-top:1.5rem;
+      gap:1rem;
+
+      .select {
+        width:25px;
+        height:25px;
+      }
+
+      p {
+        font-size:1rem;
+      }
+
+      .pick__text {
+
+        h2 {
+          font-size:1rem;
+        }
+        p {
+          margin-top:.4rem;
+          font-size:.9rem;
+        }
+      }
+    }
+
+  }
+}

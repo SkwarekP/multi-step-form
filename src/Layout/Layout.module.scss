@@ -1,0 +1,298 @@
+//body, * {
+//  box-sizing: border-box;
+//  margin:0;
+//  font-family: 'Be Vietnam Pro', sans-serif;
+//}
+//body {
+//  background:hsl(217, 100%, 97%);
+//}
+
+button {
+  cursor:pointer;
+}
+  .desktop__layout__container {
+    display:none;
+  }
+
+  .card__container {
+    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+    background: hsl(0, 0%, 100%);
+    max-width: 90%;
+    margin: -4rem auto;
+    border-radius: 10px;
+    z-index: 10;
+  }
+
+  .header {
+    background-image: url("../assets/images/bg-sidebar-mobile.svg");
+    padding:1rem 0 5.5rem 0;
+    background-size:cover;
+    display:block;
+
+    .flex__nav {
+      list-style: none;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      gap:1rem;
+      padding:1rem;
+
+      .steps__number__mobile {
+        padding:.35rem .7rem;
+        font-size:.9rem;
+        border:1px solid hsl(231, 100%, 99%);
+        border-radius:50%;
+        background: inherit;
+        color:hsl(0, 0%, 100%);
+        font-weight:500;
+        cursor:pointer;
+      }
+
+      .steps__number__active {
+        background: hsl(206, 94%, 87%) !important;
+        padding:.35rem .7rem;
+        font-size:.9rem;
+        border:1px solid hsl(231, 100%, 99%);
+        border-radius:50%;
+        color:hsl(0, 0%, 100%);
+        font-weight:500;
+        cursor:pointer;
+      }
+
+    }
+
+  }
+
+.footer__mobile__container{
+
+  .display__none__footer {
+    display:none;
+  }
+
+  .footer__flex__end {
+    display:flex;
+    position: absolute;
+    bottom:0;
+    width:100%;
+    padding:1rem;
+    background: hsl(0, 0%, 100%);
+    justify-content: flex-end !important;
+  }
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem;
+    background: hsl(0, 0%, 100%);
+  }
+
+  .nextStep__btn {
+    background:hsl(213, 96%, 18%);
+    color:hsl(0, 0%, 100%);
+    border:none;
+    border-radius:5px;
+    padding:.65rem 1rem;
+  }
+  .back__btn {
+    position:static;
+    color:hsl(231, 11%, 63%);
+    background: inherit;
+    border:none;
+    font-size:1rem;
+    display:block;
+  }
+  .back__btn__display__none {
+    display:none;
+  }
+  .next__btn__display__none {
+    display:none;
+  }
+
+}
+
+
+@media (min-width:500px) {
+
+    .card__container {
+      padding:2rem;
+      width:750px;
+      position:absolute;
+      left:50%;
+      top:55%;
+      transform: translate(-50%, -50%);
+      margin:0;
+      z-index:0;
+    }
+
+    .header {
+      padding:1rem 0 0 0;
+
+      .flex__nav {
+        gap:2rem;
+        padding:5rem;
+
+        .steps__number__mobile {
+          padding:.5rem 1rem;
+          font-size:1.2rem;
+
+        }
+        .steps__number__active {
+          background: hsl(206, 94%, 87%) !important;
+          padding:.5rem 1rem;
+          font-size:1.2rem;
+          border:1px solid hsl(231, 100%, 99%);
+          border-radius:50%;
+          color:hsl(0, 0%, 100%);
+          font-weight:500;
+          cursor:pointer;
+        }
+      }
+    }
+  .footer__mobile__container {
+    .footer {
+
+      .nextStep__btn {
+        background:hsl(213, 96%, 18%);
+        color:hsl(0, 0%, 100%);
+        border:none;
+        border-radius:5px;
+        font-size:1rem;
+        padding:.8rem 1.25rem;
+      }
+
+    }
+
+  }
+
+
+
+}
+
+@media (min-width:1000px) {
+
+  div {
+
+    .footer__mobile__container {
+      display:none;
+    }
+
+    .card__container {
+      display: none;
+    }
+
+    .header {
+      display: none;
+    }
+
+    .footer {
+      display: none;
+    }
+
+    .desktop__layout__container {
+      display: flex;
+      gap:3rem;
+      padding:1rem;
+      width:auto;
+      height:65vh;
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      background:hsl(0, 0%, 100%);
+      border-radius:20px;
+
+
+      .header__desktop {
+        width:250px;
+        background: url("../assets/images/bg-sidebar-desktop.svg");
+        border-radius:10px;
+        padding:1rem 2rem;
+
+        .header__desktop__flex__row {
+          margin-top:2rem;
+          display:flex;
+          gap:1rem;
+
+          .header__desktop__step__info {
+            text-transform: uppercase;
+            span {
+              color:hsl(231, 11%, 63%);
+              font-size:.75rem;
+            }
+            p {
+              margin-top:.4rem;
+              color:hsl(231, 100%, 99%);
+              font-size:.85rem;
+            }
+          }
+        }
+
+        .steps__number {
+          padding:.5rem 1rem;
+          font-size:1.2rem;
+          border-radius:50%;
+          border:1px solid hsl(231, 100%, 99%);
+          color:white;
+          background: inherit;
+          cursor:inherit;
+          align-self: center;
+        //hsl(206, 94%, 87%)
+
+        }
+        .steps__number__active {
+          background: hsl(206, 94%, 87%) !important;
+          padding:.5rem 1rem;
+          font-size:1.2rem;
+          border-radius:50%;
+          border:1px solid hsl(231, 100%, 99%);
+          color:white;
+          cursor:inherit;
+          align-self: center;
+        }
+      }
+
+
+      .card__container__desktop {
+        padding:3rem;
+        width:750px;
+        position:relative;
+
+        .desktop__buttons {
+
+          .nextStep__btn {
+            background:hsl(213, 96%, 18%);
+            color:hsl(0, 0%, 100%);
+            border:none;
+            border-radius:5px;
+            font-size:.9rem;
+            padding:.75rem 1.25rem;
+            position: absolute;
+            bottom:1rem;
+            right:3rem;
+          }
+          .back__btn {
+            position:absolute;
+            bottom:1rem;
+            color:hsl(231, 11%, 63%);
+            background: inherit;
+            border:none;
+            font-size:1rem;
+          }
+          .back__btn__display__none {
+            display:none;
+          }
+          .next__btn__display__none {
+            display:none;
+          }
+          .back__btn:hover {
+            color:hsl(243, 100%, 62%);
+          }
+        }
+
+      }
+    }
+  }
+}
+
