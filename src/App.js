@@ -11,7 +11,7 @@ function App() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        navigate("http://localhost:3000");
+        navigate("/");
         //eslint-disable-next-line
     }, [])
 
