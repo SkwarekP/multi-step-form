@@ -8,76 +8,86 @@
 //}
 
 button {
-  cursor:pointer;
+  cursor: pointer;
 }
-  .desktop__layout__container {
-    display:none;
-  }
 
-  .card__container {
-    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
-    background: hsl(0, 0%, 100%);
-    max-width: 90%;
-    margin: -4rem auto;
-    border-radius: 10px;
-    z-index: 10;
-  }
+.desktop__layout__container {
+  display: none;
+}
 
-  .header {
-    background-image: url("../assets/images/bg-sidebar-mobile.svg");
-    padding:1rem 0 5.5rem 0;
-    background-size:cover;
-    display:block;
+.card__container {
+  padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+  background: hsl(0, 0%, 100%);
+  max-width: 90%;
+  margin: -4rem auto;
+  border-radius: 10px;
+  z-index: 10;
+}
 
-    .flex__nav {
-      list-style: none;
-      display:flex;
+.header {
+  background-image: url("../assets/images/bg-sidebar-mobile.svg");
+  padding: 1rem 0 5.5rem 0;
+  background-size: cover;
+  display: block;
+
+  .flex__nav {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+
+    .steps__number__mobile {
+      width: 30px;
+      height: 30px;
+      display: flex;
       justify-content: center;
       align-items: center;
-      gap:1rem;
-      padding:1rem;
+      font-size: .9rem;
+      border: 1px solid hsl(231, 100%, 99%);
+      border-radius: 50%;
+      background: inherit;
+      color: hsl(0, 0%, 100%);
+      font-weight: 500;
+      cursor: pointer;
+    }
 
-      .steps__number__mobile {
-        padding:.35rem .7rem;
-        font-size:.9rem;
-        border:1px solid hsl(231, 100%, 99%);
-        border-radius:50%;
-        background: inherit;
-        color:hsl(0, 0%, 100%);
-        font-weight:500;
-        cursor:pointer;
-      }
-
-      .steps__number__active {
-        background: hsl(206, 94%, 87%) !important;
-        padding:.35rem .7rem;
-        font-size:.9rem;
-        border:1px solid hsl(231, 100%, 99%);
-        border-radius:50%;
-        color:hsl(0, 0%, 100%);
-        font-weight:500;
-        cursor:pointer;
-      }
-
+    .steps__number__active {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: hsl(206, 94%, 87%) !important;
+      font-size: .9rem;
+      border: 1px solid hsl(231, 100%, 99%);
+      border-radius: 50%;
+      color: hsl(0, 0%, 100%);
+      font-weight: 500;
+      cursor: pointer;
     }
 
   }
 
-.footer__mobile__container{
+}
+
+.footer__mobile__container {
 
   .display__none__footer {
-    display:none;
+    display: none;
   }
 
   .footer__flex__end {
-    display:flex;
+    display: flex;
     position: absolute;
-    bottom:0;
-    width:100%;
-    padding:1rem;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem;
     background: hsl(0, 0%, 100%);
     justify-content: flex-end !important;
   }
+
   .footer {
     display: flex;
     justify-content: space-between;
@@ -89,78 +99,91 @@ button {
   }
 
   .nextStep__btn {
-    background:hsl(213, 96%, 18%);
-    color:hsl(0, 0%, 100%);
-    border:none;
-    border-radius:5px;
-    padding:.65rem 1rem;
+    background: hsl(213, 96%, 18%);
+    color: hsl(0, 0%, 100%);
+    border: none;
+    border-radius: 5px;
+    padding: .65rem 1rem;
   }
+
   .back__btn {
-    position:static;
-    color:hsl(231, 11%, 63%);
+    position: static;
+    color: hsl(231, 11%, 63%);
     background: inherit;
-    border:none;
-    font-size:1rem;
-    display:block;
+    border: none;
+    font-size: 1rem;
+    display: block;
     align-self: center;
   }
+
   .back__btn__display__none {
-    display:none;
+    display: none;
   }
+
   .next__btn__display__none {
-    display:none;
+    display: none;
   }
 
 }
 
 
-@media (min-width:500px) {
+@media (min-width: 500px) {
 
-    .card__container {
-      padding:2rem;
-      width:750px;
-      position:absolute;
-      left:50%;
-      top:55%;
-      transform: translate(-50%, -50%);
-      margin:0;
-      z-index:0;
-    }
+  .card__container {
+    padding: 2rem;
+    width: 750px;
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    z-index: 0;
+  }
 
-    .header {
-      padding:1rem 0 0 0;
+  .header {
+    padding: 1rem 0 0 0;
 
-      .flex__nav {
-        gap:2rem;
-        padding:5rem;
+    .flex__nav {
+      gap: 2rem;
+      padding: 5rem;
 
-        .steps__number__mobile {
-          padding:.5rem 1rem;
-          font-size:1.2rem;
+      .steps__number__mobile {
+        padding: 0;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
 
-        }
-        .steps__number__active {
-          background: hsl(206, 94%, 87%) !important;
-          padding:.5rem 1rem;
-          font-size:1.2rem;
-          border:1px solid hsl(231, 100%, 99%);
-          border-radius:50%;
-          color:hsl(0, 0%, 100%);
-          font-weight:500;
-          cursor:pointer;
-        }
+      }
+
+      .steps__number__active {
+        background: hsl(206, 94%, 87%) !important;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        border: 1px solid hsl(231, 100%, 99%);
+        border-radius: 50%;
+        color: hsl(0, 0%, 100%);
+        font-weight: 500;
+        cursor: pointer;
       }
     }
+  }
   .footer__mobile__container {
     .footer {
 
       .nextStep__btn {
-        background:hsl(213, 96%, 18%);
-        color:hsl(0, 0%, 100%);
-        border:none;
-        border-radius:5px;
-        font-size:1rem;
-        padding:.8rem 1.25rem;
+        background: hsl(213, 96%, 18%);
+        color: hsl(0, 0%, 100%);
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        padding: .8rem 1.25rem;
       }
 
     }
@@ -168,15 +191,14 @@ button {
   }
 
 
-
 }
 
-@media (min-width:1000px) {
+@media (min-width: 1000px) {
 
   div {
 
     .footer__mobile__container {
-      display:none;
+      display: none;
     }
 
     .card__container {
@@ -193,104 +215,116 @@ button {
 
     .desktop__layout__container {
       display: flex;
-      gap:3rem;
-      padding:1rem;
-      width:auto;
-      height:65vh;
-      position:absolute;
-      left:50%;
-      top:50%;
-      transform:translate(-50%,-50%);
-      background:hsl(0, 0%, 100%);
-      border-radius:20px;
+      gap: 3rem;
+      padding: 1rem 1rem 2rem 1rem;
+      width: auto;
+      height: auto;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: hsl(0, 0%, 100%);
+      border-radius: 20px;
 
 
       .header__desktop {
-        width:250px;
-        max-height:565px;
+        width: 250px;
+        height: 565px;
         background: url("../assets/images/bg-sidebar-desktop.svg");
-        border-radius:10px;
-        padding:1rem 2rem;
+        border-radius: 10px;
+        padding: 1rem 2rem;
 
         .header__desktop__flex__row {
-          margin-top:2rem;
-          display:flex;
-          gap:1rem;
+          margin-top: 2rem;
+          display: flex;
+          gap: 1rem;
 
           .header__desktop__step__info {
             text-transform: uppercase;
+
             span {
-              color:hsl(231, 11%, 63%);
-              font-size:.75rem;
+              color: hsl(231, 11%, 63%);
+              font-size: .75rem;
             }
+
             p {
-              margin-top:.4rem;
-              color:hsl(231, 100%, 99%);
-              font-size:.85rem;
+              margin-top: .4rem;
+              color: hsl(231, 100%, 99%);
+              font-size: .85rem;
             }
           }
         }
 
         .steps__number {
-          padding:.5rem 1rem;
-          font-size:1.2rem;
-          border-radius:50%;
-          border:1px solid hsl(231, 100%, 99%);
-          color:white;
+          //padding:.5rem 1rem;
+          width: 40px;
+          height: 40px;
+          font-size: 1.2rem;
+          border-radius: 50%;
+          border: 1px solid hsl(231, 100%, 99%);
+          color: white;
           background: inherit;
-          cursor:inherit;
-          align-self: center;
-        //hsl(206, 94%, 87%)
-
+          cursor: inherit;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
+
         .steps__number__active {
           background: hsl(206, 94%, 87%) !important;
-          padding:.5rem 1rem;
-          font-size:1.2rem;
-          border-radius:50%;
-          border:1px solid hsl(231, 100%, 99%);
-          color:white;
-          cursor:inherit;
-          align-self: center;
+          font-size: 1.2rem;
+          border-radius: 50%;
+          border: 1px solid hsl(231, 100%, 99%);
+          color: white;
+          cursor: inherit;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 40px;
+          height: 40px;
         }
       }
 
 
       .card__container__desktop {
-        padding:3rem;
-        width:750px;
-        position:relative;
+        padding: 3rem;
+        width: 750px;
+        position: relative;
 
         .desktop__buttons {
 
           .nextStep__btn {
-            background:hsl(213, 96%, 18%);
-            color:hsl(0, 0%, 100%);
-            border:none;
-            border-radius:5px;
-            font-size:.9rem;
-            padding:.75rem 1.25rem;
+            background: hsl(213, 96%, 18%);
+            color: hsl(0, 0%, 100%);
+            border: none;
+            border-radius: 5px;
+            font-size: .9rem;
+            padding: .75rem 1.25rem;
             position: absolute;
-            bottom:.5rem;
-            right:3rem;
+            bottom: -1rem;
+            right: 3rem;
           }
+
           .back__btn {
-            position:absolute;
-            bottom:1rem;
-            color:hsl(231, 11%, 63%);
+            position: absolute;
+            bottom: -.5rem;
+            color: hsl(231, 11%, 63%);
             background: inherit;
-            border:none;
-            font-size:1rem;
+            border: none;
+            font-size: 1rem;
             align-self: center;
           }
+
           .back__btn__display__none {
-            display:none;
+            display: none;
           }
+
           .next__btn__display__none {
-            display:none;
+            display: none;
           }
+
           .back__btn:hover {
-            color:hsl(243, 100%, 62%);
+            color: hsl(243, 100%, 62%);
           }
         }
 

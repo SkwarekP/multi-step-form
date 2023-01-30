@@ -1,141 +1,146 @@
 
 div {
 
-    .plan__card__chosen {
-        border:1px solid rebeccapurple !important;
-        background:hsl(217, 100%, 97%) !important;
+  .plan__card__chosen {
+    border: 1px solid rebeccapurple !important;
+    background: hsl(217, 100%, 97%) !important;
+  }
+
+  .plan__card {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid hsl(229, 24%, 87%);
+    margin-top: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+
+    .plan__text {
+      h2 {
+        font-size: .95rem;
+        color: hsl(213, 96%, 18%);
+      }
+
+      p {
+        margin-top: .2rem;
+        font-size: .85rem;
+        color: hsl(231, 11%, 63%);
+      }
     }
+  }
+
+  .plan__card:hover {
+    border: 1px solid rebeccapurple;
+  }
+
+  .month__or__year {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: .75rem 2rem;
+    background: hsl(231, 100%, 99%);
+    border-radius: 10px;
+
+    .monthly_or_yearly__p__chosen {
+      font-size: 1rem;
+      font-weight: 700;
+      color: hsl(213, 96%, 18%);
+    }
+
+    .monthly_or_yearly {
+      font-size: .85rem;
+      font-weight: 700;
+      color: hsl(231, 11%, 63%);
+    }
+
+    .switcher__btn {
+      border: none;
+      border-radius: 100px;
+      padding: .5rem 1.2rem;
+      background: hsl(213, 96%, 18%);
+      position: relative;
+      cursor: pointer;
+
+      .switcher {
+        width: 12px;
+        height: 12px;
+        background: white;
+        border-radius: 50%;
+        position: absolute;
+        left: 4px;
+        top: 3px;
+      }
+
+      .switcher__toggle {
+        width: 12px;
+        height: 12px;
+        background: white;
+        border-radius: 50%;
+        position: absolute;
+        left: 21px;
+        top: 3px;
+      }
+    }
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+
+    .nextStep__btn {
+      background: hsl(213, 96%, 18%);
+      color: hsl(0, 0%, 100%);
+      border: none;
+      border-radius: 5px;
+      padding: .8rem 1.2rem;
+      font-size: 1rem;
+
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  div {
+
+    //.plan__card__chosen {
+    //    border:1px solid rebeccapurple !important;
+    //    background:hsl(217, 100%, 97%) !important;
+    //}
+
     .plan__card {
-        display: flex;
-        gap: 1rem;
-        padding: 1rem;
-        border: 1px solid hsl(229, 24%, 87%);
-        margin-top: 1rem;
-        border-radius: 10px;
-        cursor:pointer;
 
-        .plan__text {
-            h2 {
-                font-size: .95rem;
-                color: hsl(213, 96%, 18%);
-            }
-
-            p {
-                margin-top: .2rem;
-                font-size: .85rem;
-                color: hsl(231, 11%, 63%);
-            }
+      .plan__text {
+        h2 {
+          font-size: 1.2rem;
         }
+
+        p {
+          font-size: 1rem;
+        }
+      }
     }
-    .plan__card:hover {
-        border:1px solid rebeccapurple;
-    }
+
     .month__or__year {
-        margin-top:1rem;
-        display:flex;
-        justify-content: center;
-        gap:1.5rem;
-        padding:.75rem 2rem;
-        background:hsl(231, 100%, 99%);
-        border-radius:10px;
-
-        .monthly_or_yearly__p__chosen {
-            font-size:1rem;
-            font-weight: 700;
-            color:hsl(213, 96%, 18%);
-        }
-
-        .monthly_or_yearly {
-            font-size:.85rem;
-            font-weight: 700;
-            color:hsl(231, 11%, 63%);
-        }
-
-        .switcher__btn {
-            border:none;
-            border-radius:100px;
-            padding:.5rem 1.2rem;
-            background:hsl(213, 96%, 18%);
-            position: relative;
-            cursor:pointer;
-
-            .switcher {
-                width:12px;
-                height:12px;
-                background: white;
-                border-radius:50%;
-                position:absolute;
-                left:4px;
-                top:3px;
-            }
-
-            .switcher__toggle {
-                width:12px;
-                height:12px;
-                background: white;
-                border-radius:50%;
-                position:absolute;
-                left:21px;
-                top:3px;
-            }
-        }
+      p {
+        font-size: 1rem;
+        font-weight: 700;
+        color: hsl(213, 96%, 18%);
+      }
     }
-    .buttons {
-        display:flex;
-        justify-content: flex-end;
-        margin-top:1.5rem;
-
-        .nextStep__btn {
-            background:hsl(213, 96%, 18%);
-            color:hsl(0, 0%, 100%);
-            border:none;
-            border-radius:5px;
-            padding:.8rem 1.2rem;
-            font-size:1rem;
-
-        }
-    }
+  }
 }
 
-@media (min-width:768px) {
-    div {
+@media (min-width: 1000px) {
 
-        //.plan__card__chosen {
-        //    border:1px solid rebeccapurple !important;
-        //    background:hsl(217, 100%, 97%) !important;
-        //}
 
-        .plan__card {
+  .plan__card__chosen {
+    border: 1px solid rebeccapurple !important;
+    background: hsl(217, 100%, 97%) !important;
 
-            .plan__text {
-                h2 {
-                    font-size: 1.2rem;
-                }
+  }
 
-                p {
-                    font-size: 1rem;
-                }
-            }
-        }
-        .month__or__year {
-            p {
-                font-size:1rem;
-                font-weight: 700;
-                color:hsl(213, 96%, 18%);
-            }
-        }
-    }
-}
-
-@media (min-width:1000px) {
-
-    .plan__card__chosen {
-        border:1px solid rebeccapurple !important;
-        background:hsl(217, 100%, 97%) !important;
-    }
-    .plan__card {
-
-    }
 }
 
 
