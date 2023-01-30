@@ -1,30 +1,32 @@
-
 import classes from "./PickAdd.module.scss"
 import Layout from "../Layout/Layout";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {addOnsActions} from "../store";
 import {useNavigate} from "react-router-dom";
 
 function PickAdd() {
 
+    const pickAddData = useSelector(state => state.addOns);
     const monthly = useSelector(state => state.plan.monthly);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+
     const [addOnsState, setAddOnsState] = useState([
-        {id:"pickcard1", isClicked: false},
-        {id:"pickcard2", isClicked: false},
-        {id:"pickcard3", isClicked: false}
+        {id: "pickcard1", isClicked: false},
+        {id: "pickcard2", isClicked: false},
+        {id: "pickcard3", isClicked: false}
     ])
 
     const dataHandler = (id, type, price, description) => {
 
         const updateState = addOnsState.map(item => {
-            if(item.id === id) {
-                return {...item, isClicked:true, type:type, price:price, description:description}
-            }
-            else {
+            if (item.id === id && !item.isClicked) {
+                return {...item, isClicked: true, type: type, price: price, description: description}
+            } else if (item.id === id && item.isClicked) {
+                return {...item, isClicked: false}
+            } else {
                 return {...item}
             }
         })
@@ -33,20 +35,57 @@ function PickAdd() {
 
     const sendDataHandler = () => {
         const findAll = addOnsState.filter(item => item.isClicked)
-
-        if(findAll) {
-            const data = findAll.map(item => {
-                return {type: item.type, price: item.price}
+        if (findAll) {
+            let data = findAll.map(item => {
+                return {
+                    type: item.type,
+                    price: item.price,
+                    id: item.id,
+                    isClicked: item.isClicked,
+                }
             })
-            console.log(data);
             dispatch(addOnsActions.updateOns(data));
             navigate("/summary")
-        }
-
-        else {
+        } else {
             console.log("Choose your options!")
         }
     }
+
+    useEffect(() => {
+        if (pickAddData[pickAddData.length - 1]) {
+            let addedOns = pickAddData[pickAddData.length - 1].map(item => item.id)
+
+            let latestStates = addOnsState.map((item) => {
+                if (item.id === addedOns[0]) {
+                    return {
+                        ...item,
+                        isClicked: true,
+                        type: "Online service",
+                        price: monthly ? 1 : 10
+                    }
+                } else if (item.id === addedOns[1]) {
+                    return {
+                        ...item,
+                        isClicked: true,
+                        type: "Larger storage",
+                        price: monthly ? 2 : 20
+                    }
+                } else if (item.id === addedOns[2]) {
+                    return {
+                        ...item,
+                        isClicked: true,
+                        type: "Customizable profile",
+                        price: monthly ? 2 : 10
+                    }
+                } else {
+                    return {...item}
+                }
+            })
+
+            setAddOnsState(latestStates);
+
+        }//eslint-disable-next-line
+    }, [])
 
     return (
         <Layout currentUrl={"http://localhost:3000/pickadd"} onSend={sendDataHandler}>
@@ -56,16 +95,13 @@ function PickAdd() {
             </header>
             <div
                 id="pickcard1"
-                className={`${addOnsState[0].isClicked ? 
+                className={`${addOnsState[0].isClicked ?
                     classes.pick_add_card__container + " " + classes.pick_add_card__container__active : classes.pick_add_card__container}`}
-                    onClick={(e) => {
-                     e.preventDefault()
-                     dataHandler(e.target.id, "Online service", `${monthly ? 1 : 10}`, "Access to multiplayer games")
-            }}>
+                onClick={() => {
+                    dataHandler("pickcard1", "Online service", `${monthly ? 1 : 10}`, "Access to multiplayer games")
+                }}>
                 <div
-                    id="select1"
-                    className={`${addOnsState[0].isClicked ? classes.select + " " + classes.select__active : classes.select}`}>
-                </div>
+                    className={`${addOnsState[0].isClicked ? classes.select + " " + classes.select__active : classes.select}`}></div>
                 <div className={classes.pick__text}>
                     <h2>Online service</h2>
                     <p>Access to multiplayer games</p>
@@ -75,12 +111,11 @@ function PickAdd() {
             <div
                 id="pickcard2"
                 className={`${addOnsState[1].isClicked ?
-                classes.pick_add_card__container + " " + classes.pick_add_card__container__active : classes.pick_add_card__container}`}
-                 onClick={(e) => {
-                     dataHandler(e.target.id, "Larger storage", `${monthly ? 2 : 20}`, "Extra 1TB of cloud save")
-                 }}>
+                    classes.pick_add_card__container + " " + classes.pick_add_card__container__active : classes.pick_add_card__container}`}
+                onClick={() => {
+                    dataHandler("pickcard2", "Larger storage", `${monthly ? 2 : 20}`, "Extra 1TB of cloud save")
+                }}>
                 <div
-                    id="select2"
                     className={`${addOnsState[1].isClicked ? classes.select + " " + classes.select__active : classes.select}`}>
                 </div>
                 <div className={classes.pick__text}>
@@ -92,12 +127,11 @@ function PickAdd() {
             <div
                 id="pickcard3"
                 className={`${addOnsState[2].isClicked ?
-                classes.pick_add_card__container + " " + classes.pick_add_card__container__active : classes.pick_add_card__container}`}
-                 onClick={(e) => {
-                dataHandler(e.target.id, "Customizable profile", `${monthly ? 2 : 20}`, "Custom theme on your profile")
-            }}>
+                    classes.pick_add_card__container + " " + classes.pick_add_card__container__active : classes.pick_add_card__container}`}
+                onClick={() => {
+                    dataHandler("pickcard3", "Customizable profile", `${monthly ? 2 : 20}`, "Custom theme on your profile")
+                }}>
                 <div
-                    id="select3"
                     className={`${addOnsState[2].isClicked ? classes.select + " " + classes.select__active : classes.select}`}>
                 </div>
                 <div className={classes.pick__text}>
@@ -109,4 +143,5 @@ function PickAdd() {
         </Layout>
     )
 }
+
 export default PickAdd;

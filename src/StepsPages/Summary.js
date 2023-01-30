@@ -8,9 +8,9 @@ function Summary() {
     const addOns = useSelector(state => state.addOns);
     const navigate = useNavigate();
 
-    let chuj = addOns[0].map(item => item.price);
-    let sum = chuj.reduce((a,b) => a+b, 0);
-    console.log(plan.price, addOns[0]);
+    let findPrice = addOns[addOns.length - 1].map(item => item.price);
+    let sum = findPrice.reduce((a, b) => a + b, 0);
+
     const sendDataHandler = () => {
         navigate("/finishinfo");
     }
@@ -29,9 +29,9 @@ function Summary() {
                     </div>
                     <p>${plan.price}/{plan.monthly ? <span>mo</span> : <span>yr</span>}</p>
                 </div>
-                <hr />
-                {addOns[0].map(item => (
-                    <div className={classes.row}>
+                <hr/>
+                {addOns[addOns.length - 1].map(item => (
+                    <div className={classes.row} key={item.type}>
                         <div className={classes.summary__text}>
                             <p>{item.type}</p>
                         </div>

@@ -1,81 +1,88 @@
-import  classes from "./PersonalInfo.module.scss";
+import classes from "./PersonalInfo.module.scss";
 import Layout from "../Layout/Layout";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {personalInfoActions} from "../store";
 
 function PersonalInfo(props) {
 
-    const [nameState, setNameState] = useState({name: "", isValid:false, message: ""})
-    const [emailState, setEmailState] = useState({email:"", isValid:false, message: ""})
-    const [phoneNumberState, setPhoneNumberState] = useState({phoneNumber:"", isValid:false, message: ""})
+    const [nameState, setNameState] = useState({name: "", isValid: false, message: ""})
+    const [emailState, setEmailState] = useState({email: "", isValid: false, message: ""})
+    const [phoneNumberState, setPhoneNumberState] = useState({phoneNumber: "", isValid: false, message: ""})
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const formData = useSelector(state => state.personalInfo)
 
     function walidateForm() {
         let data = {};
         let arrayOfValidates = [];
 
-        if(nameState.name === "") {
+        if (nameState.name === "") {
             setNameState({...nameState, isValid: false, message: "Name can't be blank!"})
             arrayOfValidates.push(false);
 
-        }
-        else if(/\d/.test(nameState.name)) {
-            setNameState({...nameState, isValid:false, message: "Name field should not contains numbers!"})
+        } else if (/\d/.test(nameState.name)) {
+            setNameState({...nameState, isValid: false, message: "Name field should not contains numbers!"})
             arrayOfValidates.push(false);
-        }
-        else {
-            setNameState({...nameState, isValid:true, message:""})
+        } else {
+            setNameState({...nameState, isValid: true, message: ""})
             data = {...data, name: nameState.name}
             arrayOfValidates.push(true);
         }
 
-        if(emailState.email === "") {
+        if (emailState.email === "") {
             setEmailState({...emailState, isValid: false, message: "Email can't be blank!"})
             arrayOfValidates.push(false);
 
-        }
-        else if(!emailState.email.includes("@") || !emailState.email.includes(".")) {
-            setEmailState({...emailState, isValid:false, message: "Email must includes @ and ."})
+        } else if (!emailState.email.includes("@") || !emailState.email.includes(".")) {
+            setEmailState({...emailState, isValid: false, message: "Email must includes @ and ."})
             arrayOfValidates.push(false);
-        }
-        else {
-            setEmailState({...emailState, isValid:true, message: ""})
+        } else {
+            setEmailState({...emailState, isValid: true, message: ""})
             data = {...data, email: emailState.email}
             arrayOfValidates.push(true);
         }
 
-        if(phoneNumberState.phoneNumber === "") {
+        if (phoneNumberState.phoneNumber === "") {
             setPhoneNumberState({...phoneNumberState, isValid: false, message: "phone number can't be blank!"})
             arrayOfValidates.push(false);
-        }
-        else if(!/^[0-9]+$/.test(phoneNumberState.phoneNumber)) {
-            setPhoneNumberState({...phoneNumberState, isValid:false, message: "phone number must contains only digits"})
+        } else if (!/^[0-9]+$/.test(phoneNumberState.phoneNumber)) {
+            setPhoneNumberState({
+                ...phoneNumberState,
+                isValid: false,
+                message: "phone number must contains only digits"
+            })
             arrayOfValidates.push(false);
-        }
-        else if(phoneNumberState.phoneNumber.length!==9) {
-            setPhoneNumberState({...phoneNumberState, isValid:false, message: "phone number must contains exactly 9 digits"})
+        } else if (phoneNumberState.phoneNumber.length !== 9) {
+            setPhoneNumberState({
+                ...phoneNumberState,
+                isValid: false,
+                message: "phone number must contains exactly 9 digits"
+            })
             arrayOfValidates.push(false);
-        }
-        else {
-            setPhoneNumberState({...phoneNumberState, isValid:true, message: ""})
-            data = {...data, phoneNumber:phoneNumberState.phoneNumber}
+        } else {
+            setPhoneNumberState({...phoneNumberState, isValid: true, message: ""})
+            data = {...data, phoneNumber: phoneNumberState.phoneNumber}
             arrayOfValidates.push(true);
         }
 
-            return {data, arrayOfValidates};
+        return {data, arrayOfValidates};
     }
 
+    useEffect(() => {
+        setNameState({...nameState, name: formData.name})
+        setEmailState({...emailState, email: formData.email})
+        setPhoneNumberState({...phoneNumberState, phoneNumber: formData.phoneNumber})
+        //eslint-disable-next-line
+    }, [])
 
 
     const submitFormHandler = () => {
         let checkWalidate = walidateForm();
-        if(checkWalidate.arrayOfValidates.includes(false)) {
+        if (checkWalidate.arrayOfValidates.includes(false)) {
             console.log("The form is not validated")
-        }
-        else {
+        } else {
             dispatch(personalInfoActions.updatePersonalInfo(checkWalidate.data))
             navigate("/selectplan")
         }
@@ -92,24 +99,31 @@ function PersonalInfo(props) {
                 <div className={classes.eachField__container}>
                     <label>Name</label>
                     <input type="text" placeholder="e.g. Stephen King"
-                    onChange={(e) => setNameState({...nameState, name: e.target.value })}/>
-                    {nameState.isValid ? "" : <p style={{color:"red", marginTop:".2rem", fontSize:".9rem"}}>{nameState.message}</p>}
+                           onChange={(e) => setNameState({...nameState, name: e.target.value})}
+                           value={nameState.name}/>
+                    {nameState.isValid ? "" :
+                        <p style={{color: "red", marginTop: ".2rem", fontSize: ".9rem"}}>{nameState.message}</p>}
                 </div>
                 <div className={classes.eachField__container}>
                     <label>Email Address</label>
                     <input type="text" placeholder="e.g. stephenking@lorem.com"
-                    onChange={(e) => setEmailState({...emailState, email: e.target.value})}/>
-                    {emailState.isValid ? "" : <p style={{color:"red", marginTop:".2rem", fontSize:".9rem"}}>{emailState.message}</p>}
+                           onChange={(e) => setEmailState({...emailState, email: e.target.value})}
+                           value={emailState.email}/>
+                    {emailState.isValid ? "" :
+                        <p style={{color: "red", marginTop: ".2rem", fontSize: ".9rem"}}>{emailState.message}</p>}
                 </div>
                 <div className={classes.eachField__container}>
                     <label>Phone Number</label>
                     <input type="text" placeholder="e.g. 234 567 890"
-                    onChange={(e) => setPhoneNumberState({...phoneNumberState, phoneNumber: e.target.value})}/>
-                    {phoneNumberState.isValid ? "" : <p style={{color:"red", marginTop:".2rem", fontSize:".9rem"}}>{phoneNumberState.message}</p>}
+                           onChange={(e) => setPhoneNumberState({...phoneNumberState, phoneNumber: e.target.value})}
+                           value={phoneNumberState.phoneNumber}/>
+                    {phoneNumberState.isValid ? "" :
+                        <p style={{color: "red", marginTop: ".2rem", fontSize: ".9rem"}}>{phoneNumberState.message}</p>}
                 </div>
 
             </form>
         </Layout>
     )
 }
+
 export default PersonalInfo;

@@ -11,15 +11,15 @@ const plan = {
     type: "",
     price: "",
     monthly: true,
+    id: "",
+    isClicked: false
 }
-
-const addOns = [];
 
 
 const personalInfoSlice = createSlice({
     name: "personalInfo",
-    initialState : personalInfo,
-    reducers : {
+    initialState: personalInfo,
+    reducers: {
         updatePersonalInfo(state, action) {
             state.name = action.payload.name;
             state.email = action.payload.email;
@@ -36,6 +36,8 @@ const planSlice = createSlice({
             state.type = action.payload.type;
             state.price = parseInt(action.payload.price);
             state.monthly = action.payload.monthly;
+            state.isClicked = action.payload.isClicked;
+            state.id = action.payload.id;
         }
 
     }
@@ -43,11 +45,16 @@ const planSlice = createSlice({
 
 const addOnsSlice = createSlice({
     name: "addOns",
-    initialState: addOns,
+    initialState: [],
     reducers: {
         updateOns(state, action) {
             state.push(action.payload.map(item => {
-                return {...item, price: parseInt(item.price)}
+                return {
+                    type: item.type,
+                    price: parseInt(item.price),
+                    id: item.id,
+                    isClicked: item.isClicked,
+                }
             }))
         }
     }
@@ -55,7 +62,7 @@ const addOnsSlice = createSlice({
 
 
 const store = configureStore({
-    reducer : {personalInfo: personalInfoSlice.reducer, plan: planSlice.reducer, addOns: addOnsSlice.reducer}
+    reducer: {personalInfo: personalInfoSlice.reducer, plan: planSlice.reducer, addOns: addOnsSlice.reducer}
 })
 
 

@@ -5,6 +5,7 @@ div {
     background:hsl(217, 100%, 97%) !important;
   }
 
+
   .pick_add_card__container {
     padding:.5rem 1rem;
     border:1px solid hsl(229, 24%, 87%);
@@ -13,6 +14,12 @@ div {
     display:flex;
     gap:.75rem;
     cursor:pointer;
+
+    //pointer-events: all;
+    // * {
+    //  pointer-events: none;
+    //}
+
 
     .select {
       width:20px;
