@@ -5,15 +5,14 @@ import Summary from "./StepsPages/Summary";
 import FinishInfo from "./StepsPages/FinishInfo";
 import "../src/assets/style.scss";
 import {Routes, Route, useNavigate} from "react-router-dom";
-import {useEffect} from "react";
 
 function App() {
     const navigate = useNavigate();
 
-    useEffect(() => {
-        navigate("/");
-        //eslint-disable-next-line
-    }, [])
+    // useEffect(() => {
+    //     navigate("/");
+    //     //eslint-disable-next-line
+    // }, [])
 
     return (
         <Routes>
