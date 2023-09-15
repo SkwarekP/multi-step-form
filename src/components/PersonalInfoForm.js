@@ -5,7 +5,6 @@
 //     const submitFormHandler = (e) => {
 //         e.preventDefault();
 //         props.onSend({name: "Stephen King", email: "stephenking@lorem.com", phoneNr: 121212121});
-//
 //     }
 //
 //     return (
